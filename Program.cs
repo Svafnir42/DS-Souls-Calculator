@@ -10,7 +10,7 @@
     {
         while (yoursLevel < 12 & yoursLevel < neededLevel)
         {
-            souls = souls + CalculateIFlevelBelowTwelve(yoursLevel);
+            souls = souls + (int)CalculateIFlevelBelowTwelve(yoursLevel);
             yoursLevel++;
         }
     }
@@ -18,7 +18,7 @@
     {
         while (yoursLevel < neededLevel)
         {
-            souls = souls + CalculateIFlevelAboveTwelve(yoursLevel);
+            souls = souls + (int)CalculateIFlevelAboveTwelve(yoursLevel);
             yoursLevel++;
         }
     }
@@ -28,15 +28,19 @@
     return souls;
 }
 
-int CalculateIFlevelBelowTwelve(int level)
+double CalculateIFlevelBelowTwelve(int level)
 {
-    int calc = (int)((0.0068* Math.Pow(level, 3)) - (0.06 * Math.Pow(level, 2)) + (17.1 * level) + 639);
+    int lev = level + 1;
+    double calc = (0.0068 * Math.Pow(lev, 3) - 0.06 * Math.Pow(lev, 2) + 17.1 * lev + 639);
 
     return calc;
 }
-int CalculateIFlevelAboveTwelve(int level)
+
+
+double CalculateIFlevelAboveTwelve(int level)
 {
-    int calc = (int)((0.02 * Math.Pow(level, 3)) + (3.06 * Math.Pow(level, 2)) + (105.6 * level) - 895);
+    int lev = level + 1;
+    double calc = ((0.02 * Math.Pow(lev, 3)) + (3.06 * Math.Pow(lev, 2)) + (105.6 * lev) - 895);
 
     return calc;
 }
